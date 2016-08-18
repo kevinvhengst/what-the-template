@@ -2,6 +2,7 @@
 Contributors: kevinvhengst
 Tags: template, page, pages, admin, templates
 Tested up to: 4.5
+Requires at least: 4.0
 Stable tag: 4.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
