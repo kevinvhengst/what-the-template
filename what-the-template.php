@@ -7,31 +7,58 @@
 * Author URI: http://www.kevinvanhenget.nl
 */
 
+if( !class_exists('WhatTheTemplate') ):
+
+class WhatTheTemplate {
 // Add template column to admin page overview
-function page_what_template_column( $columns ) {
 
-  $template_column = array(
-    'template' => __( 'Template', 'Aternus' )
-  );
-  $columns = array_merge( $columns, $template_column );
+  function __construct() {
+    add_filter( 'manage_pages_columns', array( $this, 'page_template_column') );
+    add_action( 'manage_pages_custom_column', array( $this, 'fill_template_column') );
+  }
 
-  return $columns;
-}
-add_filter( 'manage_pages_columns', 'page_what_template_column' );
+  static function page_template_column( $columns ) {
 
-// Fill the template column with template name
-function fill_page_overview_template_column( $column ) {
+    $template_column = array(
+      'template' => __( 'Template', 'Aternus' )
+    );
+    $columns = array_merge( $columns, $template_column );
 
-  global $post;
+    return $columns;
+  }
 
-  switch ( $column ) {
-    case  'template' :
-      if( get_page_template_slug( $post->ID ) ) {
-        echo get_page_template_slug( $post->ID );
-      } else {
-        echo "Default Template";
-      }
-      break;
+  // Fill the template column with template name
+  static function fill_template_column( $column ) {
+
+    global $post;
+
+    switch ( $column ) {
+      case  'template' :
+        if( get_page_template_slug( $post->ID ) ) {
+          echo get_page_template_slug( $post->ID );
+        } else {
+          echo "Default Template";
+        }
+        break;
+    }
   }
 }
-add_action( 'manage_pages_custom_column', 'fill_page_overview_template_column' );
+
+function what_the_template_initializer()
+{
+  global $wtt;
+  
+  if( !isset($wtt) )
+  {
+    $wtt = new WhatTheTemplate();
+  }
+  
+  return $wtt;
+}
+
+// initialize WhatTheTemplate
+what_the_template_initializer();
+
+endif;
+
+?>
