@@ -12,8 +12,10 @@ if( !class_exists('WhatTheTemplate') ):
 class WhatTheTemplate {
 
   function __construct() {
+
     add_filter( 'manage_pages_columns', array( $this, 'wtt_page_template_column') );
     add_action( 'manage_pages_custom_column', array( $this, 'wtt_fill_template_column') );
+
   }
 
   // Add template column to admin page overview
@@ -25,6 +27,7 @@ class WhatTheTemplate {
     $columns = array_merge( $columns, $template_column );
 
     return $columns;
+
   }
 
   // Fill the template column with template name
@@ -41,6 +44,7 @@ class WhatTheTemplate {
         }
         break;
     }
+    
   }
 
 }
