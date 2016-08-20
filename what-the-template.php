@@ -10,14 +10,14 @@
 if( !class_exists('WhatTheTemplate') ):
 
 class WhatTheTemplate {
-// Add template column to admin page overview
 
   function __construct() {
-    add_filter( 'manage_pages_columns', array( $this, 'page_template_column') );
-    add_action( 'manage_pages_custom_column', array( $this, 'fill_template_column') );
+    add_filter( 'manage_pages_columns', array( $this, 'wtt_page_template_column') );
+    add_action( 'manage_pages_custom_column', array( $this, 'wtt_fill_template_column') );
   }
 
-  static function page_template_column( $columns ) {
+  // Add template column to admin page overview
+  static function wtt_page_template_column( $columns ) {
 
     $template_column = array(
       'template' => __( 'Template', 'Aternus' )
@@ -28,7 +28,7 @@ class WhatTheTemplate {
   }
 
   // Fill the template column with template name
-  static function fill_template_column( $column ) {
+  static function wtt_fill_template_column( $column ) {
 
     global $post;
 
@@ -42,10 +42,11 @@ class WhatTheTemplate {
         break;
     }
   }
+
 }
 
-function what_the_template_initializer()
-{
+function what_the_template_initializer(){
+
   global $wtt;
   
   if( !isset($wtt) )
@@ -54,6 +55,7 @@ function what_the_template_initializer()
   }
   
   return $wtt;
+
 }
 
 // initialize WhatTheTemplate
