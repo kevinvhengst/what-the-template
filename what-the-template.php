@@ -49,11 +49,11 @@ class WhatTheTemplate {
 
 }
 
-function what_the_template_initializer(){
+function what_the_template_initializer() {
 
   global $wtt;
   
-  if( !isset($wtt) )
+  if( !isset( $wtt ) )
   {
     $wtt = new WhatTheTemplate();
   }
