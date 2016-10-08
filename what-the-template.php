@@ -4,7 +4,7 @@
 * Version: 1.0
 * Description: This plugin shows what template file is being used for a page in the admin overview
 * Author: Kevin van Hengst
-* Author URI: http://www.kevinvanhenget.nl
+* Author URI: http://www.kevinvanhengst.nl
 */
 
 if( !class_exists('WhatTheTemplate') ):
