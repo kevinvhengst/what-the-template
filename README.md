@@ -1,7 +1,7 @@
 === What The Template ===
 Contributors: kevinvhengst
 Tags: template, page, pages, admin, templates
-Tested up to: 4.6.1
+Tested up to: 4.7.1
 Requires at least: 4.0
 Stable tag: 4.5
 License: GPLv3
